@@ -52,21 +52,25 @@ while running:
                                                y - get('h2'))))
     pygame.draw.polygon(screen, (0, 125, 0), ((x, y - get('h1') - get('h2')),
                                               (x + get('r'),
-                                               y - get('h1') - get('h2') - 1 / math.tan(var['a']) * get('r')),
+                                               y - get('h1') - get('h2') - 1 / math.tan(
+                                                       var['a']) * get('r')),
                                               (x - get('r'),
-                                               y - get('h1') - get('h2') - 1 / math.tan(var['a']) * get('r'))))
+                                               y - get('h1') - get('h2') - 1 / math.tan(
+                                                       var['a']) * get('r'))))
     ray = get('h1') / math.sin(var['a'] - math.radians(var['b'])) * math.sin(math.pi - var['a'])
     dist = (math.sin(math.radians(var['b'])) * ray +
             (get('h2') + math.cos(math.radians(var['b'])) * ray) *
             math.tan(math.pi - var['a'] * 2 + math.radians(var['b'])))
     pygame.draw.lines(screen, (255, 255, 0), 0, ((x, y - get('h2')),
                                                  (x + math.sin(math.radians(var['b'])) * ray,
-                                                  y - get('h2') - math.cos(math.radians(var['b'])) * ray),
+                                                  y - get('h2') - math.cos(
+                                                      math.radians(var['b'])) * ray),
                                                  (x + dist, y)))
     pygame.draw.circle(screen, (125, 0, 0), (x, y - get('h2')), 5)
     for i, param in enumerate(var):
-        text = font.render(param + ': ' + str(math.degrees(var[param]) if param in 'ag' else var[param]),
-                           1, (0, 255 * (mod == param), 255))
+        text = font.render(
+            param + ': ' + str(math.degrees(var[param]) if param in 'ag' else var[param]),
+            1, (0, 255 * (mod == param), 255))
         screen.blit(text, (int(x * 2.5), 30 * (i + 1)))
     pygame.display.flip()
     clock.tick(fps)
